@@ -1,0 +1,16 @@
+Tools on windows
+-> chrome browser
+-> visual studio code editor
+-> node js (backend framework)
+-> git (versioning control system)
+
+Vscode Extensions
+-> pretier
+change 
+	- default formatter
+	- format on save
+	- single quote = prettier single quote
+	- bracket pair colorization
+
+Create React App
+$ npx create-react-app fronend
