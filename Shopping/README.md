@@ -41,6 +41,43 @@
    3. get state fro usReducer
 
 6. Create Product and Rating Component
+
    1. create rating component
    2. create product component
    3. use rating component in product component
+
+7. Create Product Screen
+
+   1. fetch products from the backend
+   2. create 3 column for image, info and action
+
+8. Create Loading and Message Component
+
+   1. create loading component
+   2. use spinner component
+   3. create message component
+   4. create util.js to define getError function
+      (back 4)
+
+9. Implement Addd To Cart
+
+   1. Create React Context
+   2. define reducer
+   3. create store provider
+   4. implement add to cart button click handler
+
+10. Complete Add To Cart
+
+    1. check exist item in the cart
+    2. check count in stock backend
+
+11. Create Cart Screen
+
+    1. create 2 columns
+    2. display items list
+    3. create action column
+
+12. Complete Cart Screen
+    1. click handler for inc/dec item
+    2. click handler for remove item
+    3. click handler checkout

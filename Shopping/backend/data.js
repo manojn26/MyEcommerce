@@ -2,6 +2,8 @@
 const data = {
   products: [
     {
+      // make id with mongo db compatability
+      _id: "1",
       name: "Nike",
       slug: "nike-slim-shirt",
       category: "Shirts",
@@ -15,6 +17,7 @@ const data = {
     },
 
     {
+      _id: "2",
       name: "Addidas",
       slug: "addidas-fit-shirt",
       category: "Shirts",
@@ -28,6 +31,7 @@ const data = {
     },
 
     {
+      _id: "3",
       name: "Nike Slim Pant",
       slug: "nike-slim-pant",
       category: "Pants",
@@ -41,6 +45,7 @@ const data = {
     },
 
     {
+      _id: "4",
       name: "Adidas Fit Pant",
       slug: "nike-fit-pant",
       category: "Pants",

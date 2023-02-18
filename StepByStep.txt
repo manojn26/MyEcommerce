@@ -25,7 +25,7 @@ $ npm install express
 create server js create simple server
 $ npm install nodemon
 	- when we work on backend every time we chnge or code we cant stop the server and refresh it so we instal nodeman automatically refreshes the page
-$ npm install nodemon--save-dev(it only used in development not going for development)
+$ npm install nodemon--save-dev(it only used in development not going for production)
 
 Fetch the products from the backend
 
@@ -33,3 +33,13 @@ Manage state by reducer
 replace useState with useReducer to manage complex state in the HomeScreen
 	- we are gone install package for log state changes between dispatching actions
 	- $ npm install use-reducer-logger --force
+
+Create Product Details Screen
+- to show the product name as the title we use package called
+$ npm install react-helmet-async
+
+Create loading message components
+- create util.js retrning the error
+
+Cart functionality
+- use react context
