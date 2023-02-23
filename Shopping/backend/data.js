@@ -1,9 +1,25 @@
 // list products file
+import bcrypt from "bcryptjs";
 const data = {
+  users: [
+    {
+      name: "Manoj",
+      email: "admin@example.com",
+      // we can encrypt the password
+      password: bcrypt.hashSync("123456"),
+      isAdmin: true,
+    },
+    {
+      name: "Kumar",
+      email: "user@example.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       // make id with mongo db compatability
-      _id: "1",
+      // _id: "1",
       name: "Nike",
       slug: "nike-slim-shirt",
       category: "Shirts",
@@ -17,7 +33,7 @@ const data = {
     },
 
     {
-      _id: "2",
+      // _id: "2",
       name: "Addidas",
       slug: "addidas-fit-shirt",
       category: "Shirts",
@@ -31,7 +47,7 @@ const data = {
     },
 
     {
-      _id: "3",
+      // _id: "3",
       name: "Nike Slim Pant",
       slug: "nike-slim-pant",
       category: "Pants",
@@ -45,7 +61,7 @@ const data = {
     },
 
     {
-      _id: "4",
+      // _id: "4",
       name: "Adidas Fit Pant",
       slug: "nike-fit-pant",
       category: "Pants",
