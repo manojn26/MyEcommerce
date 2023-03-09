@@ -112,6 +112,52 @@
     4. install bycryptjs for encrypting the password
 
 17. Create Signin Backend API
+
     1. create signin api
     2. npm install jsonwebtoken
     3. define generateToken
+
+18. Create Shipping Screen
+
+    1. create form inputs
+    2. handle save shipping address
+    3. add checkout wizard bar
+
+19. Create SignUp Screen
+
+    1. create input forms
+    2. handle submit
+    3. create backend api
+
+20. Implement Select Payment Method Screen
+
+    1. create inputforms
+    2. habdle submit
+
+21. Create Place Order Screen
+
+    1. show cart items, payment and address
+    2. handle place order action
+    3. create order create api
+
+22. Implement Place Order Action
+
+    1. handle place order action
+    2. create order create api
+
+23. Create Order Screen
+
+    1. create backend api for order/:id
+    2. fetch order api in frontend
+    3. show order information in 2 columns
+
+24. Pay Order By PayPal
+    1. generate paypal client id
+    2. create api to return client id
+    3. install react-paypal-js
+    4. use PayPalScriptProvider in index.js
+    5. usePayPalScriptReducer in OrderScreen
+    6. implement loadPayPalScript function
+    7. render paypal button
+    8. implement onApprove payment function
+    9. create pay order api in backend
