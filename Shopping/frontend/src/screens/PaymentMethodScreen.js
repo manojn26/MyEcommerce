@@ -43,7 +43,7 @@ export default function PaymentMethodScreen() {
             <Form.Check
               type='radio'
               id='PayPal'
-              label='PayPal'
+              label='InterNet Banking'
               value='PayPal'
               checked={paymentMethodName === "PayPal"}
               onChange={(e) => setPaymentMethod(e.target.value)}
@@ -54,7 +54,7 @@ export default function PaymentMethodScreen() {
             <Form.Check
               type='radio'
               id='Stripe'
-              label='Stripe'
+              label='Cash'
               value='Stripe'
               checked={paymentMethodName === "Stripe"}
               onChange={(e) => setPaymentMethod(e.target.value)}

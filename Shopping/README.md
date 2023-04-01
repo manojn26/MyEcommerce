@@ -184,6 +184,121 @@
     2. add searchbox
 
 29. Create Search Screen
+
     1. show filters
     2. create api for search products
     3. display results
+
+30. Creating Admin Menu
+
+    1. define protected route component
+    2. define admin route component
+    3. add menu for admin in header
+
+31. Create Dashboard Screen
+
+    1. create dashboard ui
+    2. implement backend api
+    3. coonect ui to backend
+
+32. Manage Products
+
+    1. create product list ui
+    2. implement backend api
+    3. fetch data
+
+33. Create Product
+
+    1. create Products button
+    2. implement backend api
+    3. handle on click
+
+34. Create Edit Product
+
+    1. create edit button
+    2. create edit product ui
+    3. display product info in the input boxes
+
+35. Implement Update Product
+    1. create edit product backend api
+    2. handle update click
+
+My Implementation 1. create a file - CreateProductAdmin.js 2. implement backend 3. save the data
+
+36. Upload Product Image
+
+    1.  npm install multer
+    2.  define upload router
+    3.  create uploads folder
+    4.  handle frontend
+
+37. Delete Product
+
+    1.  show delete button
+    2.  implement backend api
+    3.  handle on click
+
+38. List Orders
+
+    1.  create order list screen
+    2.  implement backend api
+    3.  fetch display orders
+
+39. Deliver Order
+
+    1.  add deliver button
+    2.  handle click action
+    3.  implement backend api for deliver
+
+40. Delete Order
+
+    1.  add delete button
+    2.  handle click action
+    3.  implement backend api for delete
+
+41. List Users
+
+    1.  create user list screen
+    2.  implement baceknd api
+    3.  fetch and display users
+
+42. Edit User
+
+    1.  create edit button
+    2.  create edit product ui
+    3.  dispplay product info in the input boxes
+    4.  implement backend api
+    5.  handle edit click
+
+43. Delete User
+
+    1.  add delete button
+    2.  handle click action
+    3.  implement backend api for backend
+
+44. Choose Address On Google Map
+
+    1. create googlemap credentials
+    2. update .env file with Google Api Key
+    3. create api to send google api to frontend
+    4. create map screen
+    5. fetch google api
+    6. getUserLocation
+    7. install @react-google-maps/api
+    8. use it in shipping screen
+    9. apply map to the checkout screen
+
+45. Email Sent
+
+46. Review Orders
+
+    1.  create submit review form
+    2.  handle submit
+    3.  implement backend api for review
+
+47. Implement Seller View
+    1.  add seller menu
+    2.  create seller route
+    3.  list products for seller
+    4.  list orders for seller
+    5.  add Seller to Products List and Detailes Screen

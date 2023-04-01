@@ -18,6 +18,7 @@ import SignupScreen from "./screens/SignupScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import Button from "react-bootstrap/esm/Button";
@@ -25,10 +26,22 @@ import { getError } from "./utils";
 import axios from "axios";
 import SearchBox from "./components/SearchBox";
 import SearchScreen from "./screens/SearchScreen";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardScreen from "./screens/DashboardScreen";
+import AdminRoute from "./components/AdminRoute";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import CreateProductAdmin from "./screens/CreateProductAdmin";
+import OrderListScreen from "./screens/OrderListScreen";
+import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
+import MapScreen from "./screens/MapScreen";
+import SellerRoute from "./components/SellerRoute";
+import SellerProductListScreen from "./screens/SellerProductListScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart, userInfo } = state;
+  const { fullBox, cart, userInfo } = state;
 
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
@@ -58,8 +71,12 @@ function App() {
       <div
         className={
           sidebarIsOpen
-            ? "d-flex flex-column site-container active-cont"
-            : "d-flex flex-column site-container"
+            ? fullBox
+              ? "site-container active-cont d-flex flex-column full-box"
+              : "site-container active-cont d-flex flex-column"
+            : fullBox
+            ? "site-container d-flex flex-column full-box"
+            : "site-container d-flex flex-column"
         }
       >
         <ToastContainer position='bottom-center' limit={1} />
@@ -109,6 +126,40 @@ function App() {
                       Sign In
                     </Link>
                   )}
+
+                  {/* Code for Seller Menu */}
+
+                  {userInfo && userInfo.isSeller && (
+                    <NavDropdown title='Seller' id='seller-nav-dropdown'>
+                      <LinkContainer to='/seller/products'>
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+
+                      <LinkContainer to='/seller/orders'>
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
+
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropdown title='Admin' id='admin-nav-dropdown'>
+                      <LinkContainer to='/admin/dashboard'>
+                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                      </LinkContainer>
+
+                      <LinkContainer to='/admin/products'>
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+
+                      <LinkContainer to='/admin/orders'>
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+
+                      <LinkContainer to='/admin/users'>
+                        <NavDropdown.Item>Users</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -128,7 +179,7 @@ function App() {
             {categories.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
-                  to={`/search/category=${category}`}
+                  to={{ pathname: "/search", search: `category=${category}` }}
                   onClick={() => setSidebarIsOpen(false)}
                 >
                   <Nav.Link>{category}</Nav.Link>
@@ -146,12 +197,124 @@ function App() {
               <Route path='signin' element={<SigninScreen />} />
               <Route path='/shipping' element={<ShippingAddressScreen />} />
               <Route path='/signup' element={<SignupScreen />} />
-              <Route path='/profile' element={<ProfileScreen />} />
+              <Route
+                path='/profile'
+                element={
+                  <ProtectedRoute>
+                    <ProfileScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path='/map'
+                element={
+                  <ProtectedRoute>
+                    <MapScreen />
+                  </ProtectedRoute>
+                }
+              />
               <Route path='/payment' element={<PaymentMethodScreen />} />
               <Route path='/placeorder' element={<PlaceOrderScreen />} />
-              <Route path='/order/:id' element={<OrderScreen />} />
-              <Route path='/orderhistory' element={<OrderHistoryScreen />} />
+              <Route
+                path='/order/:id'
+                element={
+                  <ProtectedRoute>
+                    <OrderScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path='/orderhistory'
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
+              />
               <Route path='/search' element={<SearchScreen />} />
+
+              {/* Admin Routings */}
+              <Route
+                path='/admin/dashboard'
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/products'
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/product/:id'
+                element={
+                  <AdminRoute>
+                    <ProductEditScreen />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/product/create'
+                element={
+                  <AdminRoute>
+                    <CreateProductAdmin />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/orders'
+                element={
+                  <AdminRoute>
+                    <OrderListScreen />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/users'
+                element={
+                  <AdminRoute>
+                    <UserListScreen />
+                  </AdminRoute>
+                }
+              />
+
+              <Route
+                path='/admin/user/:id'
+                element={
+                  <AdminRoute>
+                    <UserEditScreen />
+                  </AdminRoute>
+                }
+              />
+
+              {/* Seller Routings */}
+
+              <Route
+                path='/seller/products'
+                element={
+                  <SellerRoute>
+                    <SellerProductListScreen />
+                  </SellerRoute>
+                }
+              />
+              <Route
+                path='/seller/orders'
+                element={
+                  <SellerRoute>
+                    <OrderListScreen />
+                  </SellerRoute>
+                }
+              />
             </Routes>
           </Container>
         </main>

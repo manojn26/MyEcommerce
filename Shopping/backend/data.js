@@ -8,12 +8,14 @@ const data = {
       // we can encrypt the password
       password: bcrypt.hashSync("123456"),
       isAdmin: true,
+      isSeller: false,
     },
     {
       name: "Kumar",
       email: "user@example.com",
       password: bcrypt.hashSync("123456"),
       isAdmin: false,
+      isSeller: false,
     },
   ],
   products: [

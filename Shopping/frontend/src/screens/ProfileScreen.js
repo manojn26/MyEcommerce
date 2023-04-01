@@ -27,6 +27,11 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState(userInfo.email);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [sellerName, setSellerName] = useState(userInfo.seller.name);
+  const [sellerLogo, setSetterLogo] = useState(userInfo.seller.logo);
+  const [sellerDescription, setSellerDescription] = useState(
+    userInfo.seller.description
+  );
 
   const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
     loadingUpdate: false,
@@ -45,6 +50,9 @@ export default function ProfileScreen() {
           name,
           email,
           password,
+          sellerName,
+          sellerLogo,
+          sellerDescription,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -105,6 +113,41 @@ export default function ProfileScreen() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
+
+        {/* seller data getting */}
+        {userInfo.isSeller && (
+          <>
+            <h2>Seller</h2>
+            <Form.Group className='mb-3' controlId='sellerName'>
+              <Form.Label>Seller Name</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter Seller Name'
+                value={sellerName}
+                onChange={(e) => setSellerName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className='mb-3' controlId='sellerLogo'>
+              <Form.Label>Seller Logo</Form.Label>
+              <Form.Control
+                type='text'
+                value={sellerLogo}
+                onChange={(e) => setSetterLogo(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className='mb-3' controlId='sellerDescription'>
+              <Form.Label>Seller Description</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter Seller Description'
+                value={sellerDescription}
+                onChange={(e) => setSellerDescription(e.target.value)}
+              />
+            </Form.Group>
+          </>
+        )}
 
         <div className='mb-3'>
           <Button type='submit'>Update</Button>
