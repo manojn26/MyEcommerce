@@ -47,7 +47,7 @@ const reducer = (state, action) => {
   }
 };
 
-export default function ProductListScreen() {
+export default function SellerProductListScreen() {
   const [
     {
       loading,
@@ -71,9 +71,10 @@ export default function ProductListScreen() {
 
   const { state } = useContext(Store);
   const { userInfo } = state;
+  const userID = userInfo._id;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async ({ seller = "" }) => {
       try {
         const { data } = await axios.get(`/api/products/seller?page=${page}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -84,12 +85,12 @@ export default function ProductListScreen() {
     if (successDelete) {
       dispatch({ type: "DELETE_RESET" });
     } else {
-      fetchData();
+      fetchData(userID);
     }
-  }, [page, userInfo, successDelete]);
+  }, [page, userInfo, successDelete, userID]);
 
   const createHandler = async () => {
-    navigate("/admin/product/create");
+    navigate("/seller/product/create");
   };
 
   const deleteHandler = async (product) => {
@@ -161,7 +162,7 @@ export default function ProductListScreen() {
                     <Button
                       type='button'
                       variant='info'
-                      onClick={() => navigate(`/admin/product/${product._id}`)}
+                      onClick={() => navigate(`/seller/product/${product._id}`)}
                     >
                       Edit
                     </Button>

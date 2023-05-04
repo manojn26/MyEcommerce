@@ -63,6 +63,53 @@ productRouter.get(
 );
 
 productRouter.post(
+  "/seller/create",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const newProduct = new Product({
+      name: req.body.name,
+      seller: req.user._id,
+      slug: req.body.slug || req.body.name + "product",
+      image: req.body.image,
+      price: req.body.price,
+      category: req.body.category,
+      brand: req.body.brand,
+      countInStock: req.body.countInStock,
+      rating: req.body.rating || 1,
+      numReviews: req.body.numReviews || 1,
+      descriptions: req.body.descriptions,
+    });
+    const product = await newProduct.save();
+    res.send({ message: "Product Created", product });
+  })
+);
+
+productRouter.put(
+  "seller/:id",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id.toString();
+    const product = await Product.findById(productId);
+
+    if (product) {
+      product.name = req.body.name;
+      product.slug = req.body.slug;
+      product.price = req.body.price;
+      product.image = req.body.image;
+      product.category = req.body.category;
+      product.brand = req.body.brand;
+      product.countInStock = req.body.countInStock;
+      product.descriptions = req.body.descriptions;
+
+      await product.save();
+      res.send({ message: "Product Updated" });
+    } else {
+      res.status(404).send({ message: "Product Not Found" });
+    }
+  })
+);
+
+productRouter.post(
   "/admin/create",
   isAuth,
   isAdmin,
@@ -87,7 +134,6 @@ productRouter.post(
 productRouter.put(
   "/:id",
   isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id.toString();
     const product = await Product.findById(productId);
@@ -149,7 +195,6 @@ productRouter.post(
 productRouter.delete(
   "/:id",
   isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const deleteId = req.params.id.toString();
     const product = await Product.findById(deleteId);

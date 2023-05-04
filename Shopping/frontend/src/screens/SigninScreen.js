@@ -33,6 +33,7 @@ export default function SigninScreen() {
         password,
       });
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
+      toast.success("Login Success");
       // console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");

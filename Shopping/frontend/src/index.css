@@ -77,7 +77,9 @@ main {
   height: 100%;
   position: absolute;
   left: -300px;
-  background-color: #100901;
+  /* background-color: #100901;
+   */
+  background-color: rgb(244, 245, 247);
   transition: 0.5s;
 }
 .site-container {
@@ -131,4 +133,24 @@ main {
 .map-input-box button {
   border-radius: 0 1rem 1rem 0;
   border-left: 0;
+}
+
+.cart-icon {
+  font-size: 30px;
+}
+.nav-name {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+.cat-color {
+  color: rgb(233, 30, 123);
+  margin-left: 10px;
+}
+.cat-items {
+  color: black;
+}
+
+/* search screen */
+li {
+  list-style-type: none;
 }

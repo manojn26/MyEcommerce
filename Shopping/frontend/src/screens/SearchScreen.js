@@ -12,6 +12,8 @@ import MessageBox from "../components/MessageBox";
 import Button from "react-bootstrap/Button";
 import Product from "../components/Product";
 import LinkContainer from "react-router-bootstrap/LinkContainer";
+import { GiPriceTag } from "react-icons/gi";
+import { TbCategory } from "react-icons/tb";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -156,6 +158,7 @@ export default function SearchScreen() {
               </li>
               {categories.map((c) => (
                 <li key={c}>
+                  <TbCategory /> &nbsp;
                   <Link
                     to={getFilterUrl({ category: c })}
                     className={c === category ? "text-bold" : ""}
@@ -180,6 +183,7 @@ export default function SearchScreen() {
               </li>
               {prices.map((p) => (
                 <li key={p.value}>
+                  <GiPriceTag /> &nbsp;
                   <Link
                     to={getFilterUrl({ price: p.value })}
                     className={p.value === price ? "text-bold" : ""}

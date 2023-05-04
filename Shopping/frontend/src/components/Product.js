@@ -40,7 +40,10 @@ function Product(props) {
           <Card.Title>{product.name}</Card.Title>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>{product.price}</Card.Text>
+        <Card.Text>
+          <strong>Rs. </strong>
+          {product.price}
+        </Card.Text>
         {/* here disable button does not work */}
         {product.countInStock === 0 ? (
           <Button disabled> Out Of Stock</Button>

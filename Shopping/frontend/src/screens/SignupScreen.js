@@ -105,8 +105,8 @@ export default function SignupScreen() {
         </div>
 
         <div className='mb-3'>
-          Already have an account?('')
-          <Link to={`/signin?redirect=${redirect}`}>Create Your Account</Link>
+          Already have an account?
+          <Link to={`/signin?redirect=${redirect}`}>Click to Login</Link>
         </div>
       </Form>
     </Container>
